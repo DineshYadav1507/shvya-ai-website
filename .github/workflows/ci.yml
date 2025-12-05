@@ -1,0 +1,31 @@
+name: Shvya AI Website CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+
+jobs:
+  build-and-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Show files
+        run: ls -R
+
+      - name: Check index.html exists
+        run: |
+          if [ ! -f "index.html" ]; then
+            echo "index.html not found!"
+            exit 1
+          fi
+          echo "index.html found. ✅"
+
+      - name: Dummy test
+        run: |
+          echo "Running dummy tests..."
+          echo "All good! ✅"
+
